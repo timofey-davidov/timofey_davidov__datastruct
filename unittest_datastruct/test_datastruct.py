@@ -14,7 +14,7 @@ class TestClasses(TestCase):
 
     def test_Stack(self):
         """
-        Тестируем класс Stack
+        Тестируем класс Stack и метод push
         """
         stack = Stack()
         stack.push("item1")
@@ -25,6 +25,23 @@ class TestClasses(TestCase):
         self.assertEqual(stack.top.next_node.data, "item2")
         self.assertEqual(stack.top.next_node.next_node.data, "item1")
         self.assertEqual(stack.top.next_node.next_node.next_node, None)
+
+    def test_Stack_pop(self):
+        """
+        Тестируем класс Stack и метод pop
+        """
+        stack = Stack()
+        stack.push("data1")
+        data = stack.pop()
+        self.assertEqual(stack.top, None)
+        self.assertEqual(data, "data1")
+
+        stack = Stack()
+        stack.push("data1")
+        stack.push("data2")
+        data = stack.pop()
+        self.assertEqual(stack.top.data, "data1")
+        self.assertEqual(data, "data2")
 
 if __name__ == "__main__":
     main()
