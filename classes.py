@@ -28,3 +28,17 @@ class Stack:
         else:
             self.stack_list.append(Node(item, self.stack_list[-1]))
         self.top = self.stack_list[-1]
+
+    def pop(self):
+        """
+        Функция для удаления последнего элемента из стека
+        """
+        if len(self.stack_list) == 0:
+            return None
+        else:
+            last_item = self.stack_list.pop(-1)
+            if len(self.stack_list) != 0:
+                self.top = self.stack_list[-1]
+            else:
+                self.top = None
+            return last_item.data
