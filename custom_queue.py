@@ -25,6 +25,7 @@ class Queue:
         # объекты очереди: начало (head) и конец (tail)
         self.head = head
         self.tail = tail
+        self.__removed_element = None
 
     def enqueue(self, item):
         """
@@ -37,3 +38,18 @@ class Queue:
             self.queue_list.insert(0, Node(item, None))
             self.queue_list[1].next_node = self.queue_list[0]
             self.tail = self.queue_list[0]
+
+    def dequeue(self):
+        """
+        Функция, которая убирает элемент из ОЧЕРЕДЬ
+        """
+        if len(self.queue_list) == 0:
+            return None
+        elif len(self.queue_list) > 1:
+            self.__removed_element = self.queue_list.pop(-1)
+            self.head = self.queue_list[-1]
+        else:
+            self.__removed_element = self.queue_list.pop(0)
+            self.head = None
+        return self.__removed_element.data
+
