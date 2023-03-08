@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from stack import Node, Stack
 from custom_queue import Node, Queue
+from linked_list import Node, LinkedList
 
 
 class TestClasses(TestCase):
@@ -61,6 +62,18 @@ class TestClasses(TestCase):
         self.assertEqual(queue.dequeue(), "data2")
         self.assertEqual(queue.dequeue(), "data3")
         self.assertEqual(queue.dequeue(), None)
+
+    def test_LinkedList(self):
+        """
+        Тестируем класс LinkedList
+        """
+        ll = LinkedList()
+        ll.insert_beginning({'id': 1})
+        ll.insert_at_end({'id': 2})
+        ll.insert_at_end({'id': 3})
+        ll.insert_beginning({'id': 0})
+        self.assertEqual(ll.head.data,  {'id': 0})
+        self.assertEqual(ll.tail.data, {'id': 3})
 
 
 if __name__ == "__main__":
