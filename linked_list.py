@@ -31,6 +31,22 @@ class LinkedList:
         if self.tail is None:
             self.tail = self.head
 
+    def to_list(self):
+        item_lst = list()
+        current_node = self.head
+        while current_node:
+            item_lst.append(current_node.data)
+            current_node = current_node.next_node
+        return item_lst
+
+    def get_data_by_id(self, id):
+        for i in self.to_list():
+            try:
+                if i["id"] == id:
+                    return i
+            except TypeError:
+                print("Данные не являются словарем или в словаре нет id.")
+
     def insert_at_end(self, data):
         """
         Функция для добавления элемента в конец списка
@@ -57,3 +73,13 @@ class LinkedList:
         ll_string += ' None'
         print(ll_string)
         return ll_string
+
+if __name__ == '__main__':
+    ll = LinkedList()
+    ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+    ll.insert_at_end('idusername')
+    ll.insert_at_end([1, 2, 3])
+    ll.insert_at_end({'id': 2, 'username': 'mosh_s'})
+    print(ll.to_list())
+    user_data = ll.get_data_by_id(2)
+    print(user_data)

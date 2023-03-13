@@ -74,6 +74,22 @@ class TestClasses(TestCase):
         ll.insert_beginning({'id': 0})
         self.assertEqual(ll.head.data,  {'id': 0})
         self.assertEqual(ll.tail.data, {'id': 3})
+        ll_2 = LinkedList()
+        ll_2.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        ll_2.insert_at_end({'id': 2, 'username': 'mik.roz'})
+        ll_2.insert_at_end({'id': 3, 'username': 'mosh_s'})
+        ll_2.insert_beginning({'id': 0, 'username': 'serebro'})
+        lst = ll_2.to_list()
+        self.assertEqual(lst[-1]["username"], "mosh_s")
+        ll_3 = LinkedList()
+        ll_3.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        ll_3.insert_at_end('idusername')
+        ll_3.insert_at_end([1, 2, 3])
+        ll_3.insert_at_end({'id': 2, 'username': 'mosh_s'})
+        user_data = ll.get_data_by_id(2)["id"]
+        self.assertEqual(user_data, 2)
+        user_data = ll.get_data_by_id(99)
+        self.assertEqual(user_data, None)
 
 
 if __name__ == "__main__":
